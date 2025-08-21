@@ -135,7 +135,7 @@ function App() {
   };
 
   const handleJoinWhatsApp = () => {
-    const whatsappLink = "https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE";
+    const whatsappLink = "https://chat.whatsapp.com/DgTK7ueN00r18ehiYbIdqc";
     window.open(whatsappLink, '_blank');
   };
 
