@@ -6,6 +6,7 @@ interface Question {
   question: string;
   options: string[];
   correctAnswer: number[]; // now supports multiple answers
+  image?: string;
 }
 
 const quizData: Question[] = [
@@ -13,19 +14,22 @@ const quizData: Question[] = [
     id: 1,
     question: "The 'Big 4' are primarily known as:",
     options: ["Accounting consulting firms", "Strategy consulting firms", "HR consulting firms", "Technology consulting firms"],
-    correctAnswer: [0]
+    correctAnswer: [0],
+    image: "/assets/ques1.jpg"
   },
   {
     id: 2,
     question: "'Big 3' are primarily known as:",
     options: ["Technology consulting firms", "Strategy consulting firms", "HR consulting firms", "Accounting consulting firms"],
-    correctAnswer: [1]
+    correctAnswer: [1],
+    image: "/assets/ques2.jpg"
   },
   {
     id: 3,
     question: "Management consulting includes:",
     options: ["Strategy", "Operations", "Human Resources", "Tech & Finance"],
-    correctAnswer: [0, 1, 2, 3]
+    correctAnswer: [0, 1, 2, 3],
+    image: "/assets/ques3.jpg"
   },
   {
     id: 4,
@@ -37,7 +41,8 @@ const quizData: Question[] = [
     id: 5,
     question: "Key components of the BCG Growth Matrix?",
     options: ["Company growth rate & Market growth", "Market growth & Feasibility", "Feasibility & Relevant", "Market growth rate & Relative Market Share"],
-    correctAnswer: [3]
+    correctAnswer: [3],
+    image: "/assets/ques5.jpg"
   },
   {
     id: 6,
@@ -49,19 +54,22 @@ const quizData: Question[] = [
     id: 7,
     question: "MECE Approach is:",
     options: ["Problem-solving & structuring principle", "Overlapping the issues", "Breaking down complex issues", "Item categorised in many ways"],
-    correctAnswer: [0, 2]
+    correctAnswer: [0, 2],
+    image: "/assets/ques7.jpg"
   },
   {
     id: 8,
     question: "SMART Approach stands for?",
     options: ["Specific, Massive, Achievable, Responsive, Time-bound", "Smart, Measureable, Actionable, Responsive, Traditional", "Specific, Measureable, Achievable, Relevant, Time-bound", "Seamless, Massive, Approachable, Reframe, Traceable"],
-    correctAnswer: [2]
+    correctAnswer: [2],
+    image: "/assets/ques8.jpg"
   },
   {
     id: 9,
     question: "McKinsey's 7's framework primarily aims:",
     options: ["Organizational effectiveness", "Organizational efficiency", "Quantitative Measurement System", "Analyse external market conditions"],
-    correctAnswer: [0]
+    correctAnswer: [0],
+    image: "/assets/ques9.jpg"
   }
 ];
 
@@ -304,17 +312,24 @@ function App() {
         {showFeedback && (
           <div className={`mb-6 p-4 rounded-2xl text-center ${
             isCorrect 
-              ? 'bg-[#4a7c59]/10 border border-[#4a7c59]/30' 
+              ? 'bg-[#6b9e78]/10 border border-[#6b9e78]/30' 
               : 'bg-orange-50 border border-orange-200'
           }`}>
             <p className={`text-lg font-semibold ${
-              isCorrect ? 'text-[#2d5016]' : 'text-orange-800'
+              isCorrect ? 'text-[#3f6e2c]' : 'text-orange-800'
             }`}>
               {isCorrect 
                 ? getRandomMessage(motivationalMessages)
                 : getRandomMessage(emphatheticMessages)
               }
             </p>
+            {currentQuestion.image && (
+              <img
+                src={currentQuestion.image}
+                alt="Answer explanation"
+                className="mt-4 w-full max-w-sm mx-auto rounded-xl shadow-md"
+              />
+            )}
           </div>
         )}
 
